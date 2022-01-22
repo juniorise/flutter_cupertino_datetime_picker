@@ -24,7 +24,7 @@ class DatePickerWidget extends StatelessWidget {
     this.dateFormat = DATETIME_PICKER_DATE_FORMAT,
     this.dateFormatSeparator = DATE_FORMAT_SEPARATOR,
     this.locale = DATETIME_PICKER_LOCALE_DEFAULT,
-    this.pickerTheme = DateTimePickerTheme.Default,
+    this.pickerTheme = DateTimePickerTheme.defaultTheme,
     this.onCancel,
     this.onChange,
     this.onConfirm,

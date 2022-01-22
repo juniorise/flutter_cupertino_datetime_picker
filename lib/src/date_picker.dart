@@ -43,7 +43,7 @@ class DatePicker {
     String? dateFormat,
     DateTimePickerLocale locale = DATETIME_PICKER_LOCALE_DEFAULT,
     DateTimePickerMode pickerMode = DateTimePickerMode.date,
-    DateTimePickerTheme pickerTheme = DateTimePickerTheme.Default,
+    DateTimePickerTheme pickerTheme = DateTimePickerTheme.defaultTheme,
     DateVoidCallback? onCancel,
     DateVoidCallback? onClose,
     DateValueCallback? onChange,

@@ -20,7 +20,7 @@ class TimePickerWidget extends StatelessWidget {
     this.dateFormat = DATETIME_PICKER_TIME_FORMAT,
     this.dateFormatSeparator = DATE_FORMAT_SEPARATOR,
     this.locale = DATETIME_PICKER_LOCALE_DEFAULT,
-    this.pickerTheme = DateTimePickerTheme.Default,
+    this.pickerTheme = DateTimePickerTheme.defaultTheme,
     this.minuteDivider = 1,
     this.onCancel,
     this.onChange,

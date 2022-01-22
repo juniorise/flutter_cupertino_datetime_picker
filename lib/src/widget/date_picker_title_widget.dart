@@ -65,6 +65,7 @@ class DatePickerTitleWidget extends StatelessWidget {
       height: pickerTheme.titleHeight,
       child: TextButton(
         child: cancelWidget,
+        style: pickerTheme.buttonStyle,
         onPressed: () => onCancel(),
       ),
     );
@@ -96,6 +97,7 @@ class DatePickerTitleWidget extends StatelessWidget {
       height: pickerTheme.titleHeight,
       child: TextButton(
         child: confirmWidget,
+        style: pickerTheme.buttonStyle,
         onPressed: () => onConfirm(),
       ),
     );

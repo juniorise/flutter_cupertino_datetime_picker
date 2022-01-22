@@ -17,7 +17,7 @@ const double DATETIME_PICKER_TITLE_HEIGHT = 44.0;
 const double DATETIME_PICKER_ITEM_HEIGHT = 36.0;
 
 /// Default value of DatePicker's item [TextStyle].
-const TextStyle DATETIME_PICKER_ITEM_TEXT_STYLE = const TextStyle(color: Color(0xFF000046), fontSize: 16.0);
+const TextStyle DATETIME_PICKER_ITEM_TEXT_STYLE = TextStyle(color: Color(0xFF000046), fontSize: 16.0);
 
 class DateTimePickerTheme with Diagnosticable {
   final cancelDefault = const Text('OK');
@@ -48,9 +48,13 @@ class DateTimePickerTheme with Diagnosticable {
     this.titleHeight = DATETIME_PICKER_TITLE_HEIGHT,
     this.itemHeight = DATETIME_PICKER_ITEM_HEIGHT,
     this.itemTextStyle = DATETIME_PICKER_ITEM_TEXT_STYLE,
+    this.buttonStyle,
   });
 
-  static const DateTimePickerTheme Default = DateTimePickerTheme();
+  static const DateTimePickerTheme defaultTheme = DateTimePickerTheme();
+
+  /// Dancel & Confirm button style
+  final ButtonStyle? buttonStyle;
 
   /// DatePicker's background color.
   final Color backgroundColor;
