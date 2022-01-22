@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 
 class DatePickerBottomSheet extends StatefulWidget {
-  DatePickerBottomSheet({Key? key}) : super(key: key);
+  const DatePickerBottomSheet({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DatePickerBottomSheetState();
@@ -17,10 +18,10 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
   bool? _showTitle = true;
 
   DateTimePickerLocale? _locale = DateTimePickerLocale.en_us;
-  List<DateTimePickerLocale> _locales = DateTimePickerLocale.values;
+  final List<DateTimePickerLocale> _locales = DateTimePickerLocale.values;
 
   String _format = 'yyyy-MMMM-dd';
-  TextEditingController _formatCtrl = TextEditingController();
+  final TextEditingController _formatCtrl = TextEditingController();
 
   DateTime? _dateTime;
 
@@ -35,7 +36,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
   Widget build(BuildContext context) {
     // create locale radio list
     List<Widget> radios = [];
-    _locales.forEach((locale) {
+    for (DateTimePickerLocale locale in _locales) {
       radios.add(Container(
         margin: EdgeInsets.only(right: 8.0),
         child: Row(
@@ -50,16 +51,13 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
                 });
               },
             ),
-            Text(locale
-                .toString()
-                .substring(locale.toString().indexOf('.') + 1)),
+            Text(locale.toString().substring(locale.toString().indexOf('.') + 1)),
           ],
         ),
       ));
-    });
+    }
 
-    TextStyle hintTextStyle =
-        Theme.of(context).textTheme.subtitle1!.apply(color: Color(0xFF999999));
+    TextStyle hintTextStyle = Theme.of(context).textTheme.subtitle1!.apply(color: Color(0xFF999999));
     return Scaffold(
       appBar: AppBar(title: Text('DatePicker Bottom Sheet')),
       body: Container(
@@ -71,12 +69,11 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 115.0,
                     child: Text('min DateTime:', style: hintTextStyle),
                   ),
-                  Text(MIN_DATETIME,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(MIN_DATETIME, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -86,11 +83,8 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
-                      width: 115.0,
-                      child: Text('max DateTime:', style: hintTextStyle)),
-                  Text(MAX_DATETIME,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  SizedBox(width: 115.0, child: Text('max DateTime:', style: hintTextStyle)),
+                  Text(MAX_DATETIME, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -100,11 +94,8 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
-                      width: 115.0,
-                      child: Text('init DateTime:', style: hintTextStyle)),
-                  Text(INIT_DATETIME,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  SizedBox(width: 115.0, child: Text('init DateTime:', style: hintTextStyle)),
+                  Text(INIT_DATETIME, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -144,10 +135,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               margin: EdgeInsets.only(top: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Locale: '),
-                  Wrap(direction: Axis.horizontal, children: radios)
-                ],
+                children: <Widget>[Text('Locale: '), Wrap(direction: Axis.horizontal, children: radios)],
               ),
             ),
 
@@ -157,8 +145,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('Selected Date:',
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text('Selected Date:', style: Theme.of(context).textTheme.subtitle1),
                   Container(
                     padding: EdgeInsets.only(left: 12.0),
                     child: Text(
@@ -195,8 +182,16 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
       initialDateTime: _dateTime,
       dateFormat: _format,
       locale: _locale!,
-      onClose: () => print("----- onClose -----"),
-      onCancel: () => print('onCancel'),
+      onClose: () {
+        if (kDebugMode) {
+          print("----- onClose -----");
+        }
+      },
+      onCancel: () {
+        if (kDebugMode) {
+          print('onCancel');
+        }
+      },
       onChange: (dateTime, List<int> index) {
         setState(() {
           _dateTime = dateTime;

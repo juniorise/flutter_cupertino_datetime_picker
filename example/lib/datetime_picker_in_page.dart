@@ -6,7 +6,7 @@ import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_pic
 /// @author dylan wu
 /// @since 2019-05-10
 class DateTimePickerInPage extends StatefulWidget {
-  DateTimePickerInPage({Key? key}) : super(key: key);
+  const DateTimePickerInPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DateTimePickerInPageState();
@@ -28,8 +28,7 @@ class _DateTimePickerInPageState extends State<DateTimePickerInPage> {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle hintTextStyle =
-        Theme.of(context).textTheme.subtitle1!.apply(color: Color(0xFF999999));
+    TextStyle hintTextStyle = Theme.of(context).textTheme.subtitle1!.apply(color: Color(0xFF999999));
     return Scaffold(
       appBar: AppBar(title: Text("DateTimePicker In Page")),
       body: Container(
@@ -42,12 +41,11 @@ class _DateTimePickerInPageState extends State<DateTimePickerInPage> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 115.0,
                     child: Text('min DateTime:', style: hintTextStyle),
                   ),
-                  Text(MIN_DATETIME,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(MIN_DATETIME, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -57,12 +55,11 @@ class _DateTimePickerInPageState extends State<DateTimePickerInPage> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 115.0,
                     child: Text('max DateTime:', style: hintTextStyle),
                   ),
-                  Text(MAX_DATETIME,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(MAX_DATETIME, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -72,12 +69,11 @@ class _DateTimePickerInPageState extends State<DateTimePickerInPage> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 115.0,
                     child: Text('init DateTime:', style: hintTextStyle),
                   ),
-                  Text(INIT_DATETIME,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(INIT_DATETIME, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -87,12 +83,11 @@ class _DateTimePickerInPageState extends State<DateTimePickerInPage> {
               padding: EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: 115.0,
                     child: Text('Date Format:', style: hintTextStyle),
                   ),
-                  Text(DATE_FORMAT,
-                      style: Theme.of(context).textTheme.subtitle1),
+                  Text(DATE_FORMAT, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -150,8 +145,7 @@ class _DateTimePickerInPageState extends State<DateTimePickerInPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Selected DateTime:',
-                    style: Theme.of(context).textTheme.subtitle1),
+                Text('Selected DateTime:', style: Theme.of(context).textTheme.subtitle1),
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.only(top: 4.0),
