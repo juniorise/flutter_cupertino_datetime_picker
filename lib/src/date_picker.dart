@@ -172,6 +172,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
   }
 }
 
+const Curve _modalBottomSheetCurve = decelerateEasing;
+
 class _DatePickerComponent extends StatelessWidget {
   final _DatePickerRoute route;
   final double _pickerHeight;
@@ -182,6 +184,7 @@ class _DatePickerComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MediaQueryData mediaQuery = MediaQuery.of(context);
     Widget? pickerWidget;
     switch (route.pickerMode) {
       case DateTimePickerMode.date:
@@ -202,18 +205,30 @@ class _DatePickerComponent extends StatelessWidget {
         );
         break;
     }
-    return GestureDetector(
-      child: AnimatedBuilder(
-        animation: route.animation!,
-        builder: (BuildContext context, Widget? child) {
-          return ClipRect(
+    return AnimatedBuilder(
+      animation: route.animation!,
+      child: pickerWidget,
+      builder: (BuildContext context, Widget? child) {
+        // Disable the initial animation when accessible navigation is on so
+        // that the semantics are added to the tree at the correct time.
+        final double animationValue = _modalBottomSheetCurve.transform(
+          mediaQuery.accessibleNavigation ? 1.0 : route.animation!.value,
+        );
+        return Semantics(
+          scopesRoute: true,
+          namesRoute: true,
+          explicitChildNodes: true,
+          child: ClipRect(
             child: CustomSingleChildLayout(
-              delegate: _BottomPickerLayout(route.animation!.value, contentHeight: _pickerHeight),
-              child: pickerWidget,
+              delegate: _BottomPickerLayout(
+                animationValue,
+                contentHeight: _pickerHeight,
+              ),
+              child: child,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
