@@ -10,14 +10,14 @@ class DatePickerBottomSheet extends StatefulWidget {
   State<StatefulWidget> createState() => _DatePickerBottomSheetState();
 }
 
-const String MIN_DATETIME = '2010-05-12';
-const String MAX_DATETIME = '2030-11-25';
-const String INIT_DATETIME = '2021-08-31';
+const String minDateTime = '2010-05-12';
+const String maxDateTime = '2030-11-25';
+const String initDateTime = '2021-08-31';
 
 class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
   bool? _showTitle = true;
 
-  DateTimePickerLocale? _locale = DateTimePickerLocale.en_us;
+  DateTimePickerLocale? _locale = DateTimePickerLocale.enUs;
   final List<DateTimePickerLocale> _locales = DateTimePickerLocale.values;
 
   String _format = 'yyyy-MMMM-dd';
@@ -29,7 +29,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
   void initState() {
     super.initState();
     _formatCtrl.text = _format;
-    _dateTime = DateTime.parse(INIT_DATETIME);
+    _dateTime = DateTime.parse(initDateTime);
   }
 
   @override
@@ -73,7 +73,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
                     width: 115.0,
                     child: Text('min DateTime:', style: hintTextStyle),
                   ),
-                  Text(MIN_DATETIME, style: Theme.of(context).textTheme.subtitle1),
+                  Text(minDateTime, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -84,7 +84,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               child: Row(
                 children: <Widget>[
                   SizedBox(width: 115.0, child: Text('max DateTime:', style: hintTextStyle)),
-                  Text(MAX_DATETIME, style: Theme.of(context).textTheme.subtitle1),
+                  Text(maxDateTime, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -95,7 +95,7 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
               child: Row(
                 children: <Widget>[
                   SizedBox(width: 115.0, child: Text('init DateTime:', style: hintTextStyle)),
-                  Text(INIT_DATETIME, style: Theme.of(context).textTheme.subtitle1),
+                  Text(initDateTime, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -177,8 +177,8 @@ class _DatePickerBottomSheetState extends State<DatePickerBottomSheet> {
         showTitle: _showTitle!,
         confirm: Text('custom Done', style: TextStyle(color: Colors.red)),
       ),
-      minDateTime: DateTime.parse(MIN_DATETIME),
-      maxDateTime: DateTime.parse(MAX_DATETIME),
+      minDateTime: DateTime.parse(minDateTime),
+      maxDateTime: DateTime.parse(maxDateTime),
       initialDateTime: _dateTime,
       dateFormat: _format,
       locale: _locale!,

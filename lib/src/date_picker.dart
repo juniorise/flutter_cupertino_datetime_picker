@@ -41,7 +41,7 @@ class DatePicker {
     DateTime? maxDateTime,
     DateTime? initialDateTime,
     String? dateFormat,
-    DateTimePickerLocale locale = DATETIME_PICKER_LOCALE_DEFAULT,
+    DateTimePickerLocale locale = dateTimePickerLocaleDefault,
     DateTimePickerMode pickerMode = DateTimePickerMode.date,
     DateTimePickerTheme pickerTheme = DateTimePickerTheme.defaultTheme,
     DateVoidCallback? onCancel,
@@ -52,8 +52,8 @@ class DatePicker {
     bool onMonthChangeStartWithFirstDate = false,
   }) {
     // handle the range of datetime
-    minDateTime ??= DateTime.parse(DATE_PICKER_MIN_DATETIME);
-    maxDateTime ??= DateTime.parse(DATE_PICKER_MAX_DATETIME);
+    minDateTime ??= DateTime.parse(datePickerMinDateTime);
+    maxDateTime ??= DateTime.parse(datePickerMaxDateTime);
 
     // handle initial DateTime
     initialDateTime ??= DateTime.now();

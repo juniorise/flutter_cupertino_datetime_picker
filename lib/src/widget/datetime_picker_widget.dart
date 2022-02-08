@@ -18,9 +18,9 @@ class DateTimePickerWidget extends StatefulWidget {
     this.minDateTime,
     this.maxDateTime,
     this.initDateTime,
-    this.dateFormat = DATETIME_PICKER_TIME_FORMAT,
-    this.dateFormatSeparator = DATE_FORMAT_SEPARATOR,
-    this.locale = DATETIME_PICKER_LOCALE_DEFAULT,
+    this.dateFormat = datePickerTimeFormat,
+    this.dateFormatSeparator = dateFormatSEPARATOR,
+    this.locale = dateTimePickerLocaleDefault,
     this.pickerTheme = DateTimePickerTheme.defaultTheme,
     this.minuteDivider = 1,
     this.onCancel,
@@ -28,8 +28,8 @@ class DateTimePickerWidget extends StatefulWidget {
     this.onConfirm,
     this.onMonthChangeStartWithFirstDate = false,
   }) : super(key: key) {
-    DateTime minTime = minDateTime ?? DateTime.parse(DATE_PICKER_MIN_DATETIME);
-    DateTime maxTime = maxDateTime ?? DateTime.parse(DATE_PICKER_MAX_DATETIME);
+    DateTime minTime = minDateTime ?? DateTime.parse(datePickerMinDateTime);
+    DateTime maxTime = maxDateTime ?? DateTime.parse(datePickerMaxDateTime);
     assert(minTime.compareTo(maxTime) < 0);
   }
 
@@ -44,8 +44,7 @@ class DateTimePickerWidget extends StatefulWidget {
   final bool onMonthChangeStartWithFirstDate;
 
   @override
-  State<StatefulWidget> createState() =>
-      _DateTimePickerWidgetState(minDateTime, maxDateTime, initDateTime, minuteDivider);
+  State<StatefulWidget> createState() => _DateTimePickerWidgetState();
 }
 
 class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
@@ -65,11 +64,16 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
 
   bool _isChangeTimeRange = false;
 
-  _DateTimePickerWidgetState(DateTime? minTime, DateTime? maxTime, DateTime? initTime, int minuteDivider) {
+  _DateTimePickerWidgetState() {
+    DateTime? minTime = widget.minDateTime;
+    DateTime? maxTime = widget.maxDateTime;
+    DateTime? initTime = widget.initDateTime;
+    int minuteDivider = widget.minuteDivider;
+
     // check minTime value
-    minTime ??= DateTime.parse(DATE_PICKER_MIN_DATETIME);
+    minTime ??= DateTime.parse(datePickerMinDateTime);
     // check maxTime value
-    maxTime ??= DateTime.parse(DATE_PICKER_MAX_DATETIME);
+    maxTime ??= DateTime.parse(datePickerMaxDateTime);
     // check initTime value
     initTime ??= DateTime.now();
     // limit initTime value

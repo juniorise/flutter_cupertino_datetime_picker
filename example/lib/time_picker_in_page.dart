@@ -12,10 +12,10 @@ class TimePickerInPage extends StatefulWidget {
   State<StatefulWidget> createState() => _TimePickerInPageState();
 }
 
-const String MIN_DATETIME = '2010-05-12 05:15:20';
-const String MAX_DATETIME = '2021-11-25 22:45:10';
-const String INIT_DATETIME = '2019-05-17 18:13:15';
-const String DATE_FORMAT = 'HH时:mm分:s';
+const String minDateTime = '2010-05-12 05:15:20';
+const String maxDateTime = '2021-11-25 22:45:10';
+const String initDateTime = '2019-05-17 18:13:15';
+const String dateFormat = 'HH时:mm分:s';
 
 class _TimePickerInPageState extends State<TimePickerInPage> {
   DateTime? _dateTime;
@@ -23,7 +23,7 @@ class _TimePickerInPageState extends State<TimePickerInPage> {
   @override
   void initState() {
     super.initState();
-    _dateTime = DateTime.parse(INIT_DATETIME);
+    _dateTime = DateTime.parse(initDateTime);
   }
 
   @override
@@ -45,7 +45,7 @@ class _TimePickerInPageState extends State<TimePickerInPage> {
                     width: 115.0,
                     child: Text('min DateTime:', style: hintTextStyle),
                   ),
-                  Text(MIN_DATETIME.substring(11), style: Theme.of(context).textTheme.subtitle1),
+                  Text(minDateTime.substring(11), style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -59,7 +59,7 @@ class _TimePickerInPageState extends State<TimePickerInPage> {
                     width: 115.0,
                     child: Text('max DateTime:', style: hintTextStyle),
                   ),
-                  Text(MAX_DATETIME.substring(11), style: Theme.of(context).textTheme.subtitle1),
+                  Text(maxDateTime.substring(11), style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -73,7 +73,7 @@ class _TimePickerInPageState extends State<TimePickerInPage> {
                     width: 115.0,
                     child: Text('init DateTime:', style: hintTextStyle),
                   ),
-                  Text(INIT_DATETIME.substring(11), style: Theme.of(context).textTheme.subtitle1),
+                  Text(initDateTime.substring(11), style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -87,7 +87,7 @@ class _TimePickerInPageState extends State<TimePickerInPage> {
                     width: 115.0,
                     child: Text('Date Format:', style: hintTextStyle),
                   ),
-                  Text(DATE_FORMAT, style: Theme.of(context).textTheme.subtitle1),
+                  Text(dateFormat, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -96,10 +96,10 @@ class _TimePickerInPageState extends State<TimePickerInPage> {
             Container(
               margin: EdgeInsets.only(top: 8.0, bottom: 40.0),
               child: DateTimePickerWidget(
-                minDateTime: DateTime.parse(MIN_DATETIME),
-                maxDateTime: DateTime.parse(MAX_DATETIME),
-                initDateTime: DateTime.parse(INIT_DATETIME),
-                dateFormat: DATE_FORMAT,
+                minDateTime: DateTime.parse(minDateTime),
+                maxDateTime: DateTime.parse(maxDateTime),
+                initDateTime: DateTime.parse(initDateTime),
+                dateFormat: dateFormat,
                 minuteDivider: 15,
                 pickerTheme: DateTimePickerTheme(showTitle: false, backgroundColor: Color(0xFFe1bee7)),
                 onChange: (dateTime, selectedIndex) {
