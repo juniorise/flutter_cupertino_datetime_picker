@@ -9,13 +9,13 @@ class TimePickerBottomSheet extends StatefulWidget {
   State<StatefulWidget> createState() => _TimePickerBottomSheetState();
 }
 
-const String MIN_DATETIME = '2010-05-12 10:47:00';
-const String MAX_DATETIME = '2021-11-25 22:45:10';
-const String INIT_DATETIME = '2019-05-17 18:13:15';
+const String minDateTime = '2010-05-12 10:47:00';
+const String maxDateTime = '2021-11-25 22:45:10';
+const String initDateTime = '2019-05-17 18:13:15';
 
 class _TimePickerBottomSheetState extends State<TimePickerBottomSheet> {
   String _format = 'HH:mm';
-  TextEditingController _formatCtrl = TextEditingController();
+  final TextEditingController _formatCtrl = TextEditingController();
 
   late DateTime _dateTime;
 
@@ -23,7 +23,7 @@ class _TimePickerBottomSheetState extends State<TimePickerBottomSheet> {
   void initState() {
     super.initState();
     _formatCtrl.text = _format;
-    _dateTime = DateTime.parse(INIT_DATETIME);
+    _dateTime = DateTime.parse(initDateTime);
   }
 
   @override
@@ -44,7 +44,7 @@ class _TimePickerBottomSheetState extends State<TimePickerBottomSheet> {
                     width: 115.0,
                     child: Text('min DateTime:', style: hintTextStyle),
                   ),
-                  Text(MIN_DATETIME.substring(11), style: Theme.of(context).textTheme.subtitle1),
+                  Text(minDateTime.substring(11), style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -58,7 +58,7 @@ class _TimePickerBottomSheetState extends State<TimePickerBottomSheet> {
                     width: 115.0,
                     child: Text('max DateTime:', style: hintTextStyle),
                   ),
-                  Text(MAX_DATETIME.substring(11), style: Theme.of(context).textTheme.subtitle1),
+                  Text(maxDateTime.substring(11), style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -72,7 +72,7 @@ class _TimePickerBottomSheetState extends State<TimePickerBottomSheet> {
                     width: 115.0,
                     child: Text('init DateTime:', style: hintTextStyle),
                   ),
-                  Text(INIT_DATETIME.substring(11), style: Theme.of(context).textTheme.subtitle1),
+                  Text(initDateTime.substring(11), style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -142,9 +142,9 @@ class _TimePickerBottomSheetState extends State<TimePickerBottomSheet> {
   void _showTimePicker() {
     DatePicker.showDatePicker(
       context,
-      minDateTime: DateTime.parse(MIN_DATETIME),
-      maxDateTime: DateTime.parse(MAX_DATETIME),
-      initialDateTime: DateTime.parse(INIT_DATETIME),
+      minDateTime: DateTime.parse(minDateTime),
+      maxDateTime: DateTime.parse(maxDateTime),
+      initialDateTime: DateTime.parse(initDateTime),
       dateFormat: _format,
       pickerMode: DateTimePickerMode.time, // show TimePicker
       pickerTheme: DateTimePickerTheme(

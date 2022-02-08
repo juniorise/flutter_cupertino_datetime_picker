@@ -9,18 +9,18 @@ class DateTimePickerBottomSheet extends StatefulWidget {
   State<StatefulWidget> createState() => _DateTimePickerBottomSheetState();
 }
 
-const String MIN_DATETIME = '2010-05-15 09:23:10';
-const String MAX_DATETIME = '2019-06-03 21:11:00';
-const String INIT_DATETIME = '2019-05-16 09:00:00';
+const String minDateTime = '2010-05-15 09:23:10';
+const String maxDateTime = '2019-06-03 21:11:00';
+const String initDateTime = '2019-05-16 09:00:00';
 
 class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
   bool? _showTitle = true;
 
   String _format = 'yyyy-M月-d日  H时:m分:s';
-  TextEditingController _formatCtrl = TextEditingController();
+  final TextEditingController _formatCtrl = TextEditingController();
 
-  DateTimePickerLocale? _locale = DateTimePickerLocale.zh_cn;
-  List<DateTimePickerLocale> _locales = DateTimePickerLocale.values;
+  DateTimePickerLocale? _locale = DateTimePickerLocale.zhCn;
+  final List<DateTimePickerLocale> _locales = DateTimePickerLocale.values;
 
   late DateTime _dateTime;
 
@@ -28,15 +28,15 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
   void initState() {
     super.initState();
     _formatCtrl.text = _format;
-    _dateTime = DateTime.parse(INIT_DATETIME);
+    _dateTime = DateTime.parse(initDateTime);
   }
 
   /// Display time picker.
   void _showDateTimePicker() {
     DatePicker.showDatePicker(
       context,
-      minDateTime: DateTime.parse(MIN_DATETIME),
-      maxDateTime: DateTime.parse(MAX_DATETIME),
+      minDateTime: DateTime.parse(minDateTime),
+      maxDateTime: DateTime.parse(maxDateTime),
       initialDateTime: _dateTime,
       dateFormat: _format,
       locale: _locale!,
@@ -99,7 +99,7 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
                     width: 115.0,
                     child: Text('min DateTime:', style: hintTextStyle),
                   ),
-                  Text(MIN_DATETIME, style: Theme.of(context).textTheme.subtitle1),
+                  Text(minDateTime, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -113,7 +113,7 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
                     width: 115.0,
                     child: Text('max DateTime:', style: hintTextStyle),
                   ),
-                  Text(MAX_DATETIME, style: Theme.of(context).textTheme.subtitle1),
+                  Text(maxDateTime, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
@@ -127,7 +127,7 @@ class _DateTimePickerBottomSheetState extends State<DateTimePickerBottomSheet> {
                     width: 115.0,
                     child: Text('init DateTime:', style: hintTextStyle),
                   ),
-                  Text(INIT_DATETIME, style: Theme.of(context).textTheme.subtitle1),
+                  Text(initDateTime, style: Theme.of(context).textTheme.subtitle1),
                 ],
               ),
             ),
