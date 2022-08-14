@@ -2,6 +2,8 @@ import 'dart:math';
 
 part 'strings_en_us.dart';
 
+part 'strings_km.dart';
+
 part 'strings_zh_cn.dart';
 
 part 'strings_pt_br.dart';
@@ -75,6 +77,9 @@ abstract class _StringsI18n {
 enum DateTimePickerLocale {
   /// English (EN) United States
   enUs,
+
+  /// Khmer (KM)
+  km,
 
   /// Chinese (ZH) Simplified
   zhCn,
@@ -178,6 +183,7 @@ const Map<DateTimePickerLocale, _StringsI18n> datePickerI18n = {
   DateTimePickerLocale.srCyrl: _StringsSrCyrillic(),
   DateTimePickerLocale.srLatn: _StringsSrLatin(),
   DateTimePickerLocale.nl: _StringsNl(),
+  DateTimePickerLocale.km: _StringsKm(),
 };
 
 class DatePickerI18n {
